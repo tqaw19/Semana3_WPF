@@ -27,7 +27,7 @@ namespace EntornoDesconectado
 
         private void CboAnios_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {           
-            cboAnio.ItemsSource = obj.ListarPaises();
+            cboAnio.ItemsSource = obj.ListarPaises(cboAnio);
         }
     }
 }
