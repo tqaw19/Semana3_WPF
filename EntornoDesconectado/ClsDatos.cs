@@ -32,6 +32,32 @@ namespace EntornoDesconectado
             return dataTable;
         }
 
+        public DataTable ListaAnios()
+        {
+            SqlConnection connection = LeerCadena();
+            connection.Open();
+            SqlDataAdapter sqlData = new SqlDataAdapter("Usp_ListaAnios", connection);
+            sqlData.SelectCommand.CommandType = CommandType.StoredProcedure;
+            DataTable dataTable = new DataTable();
+            sqlData.Fill(dataTable);
+            connection.Close();
+            return dataTable;
+        }
+
+        public DataTable ListarPaises()
+        {
+            SqlConnection connection = LeerCadena();
+            connection.Open();
+            using (SqlDataAdapter sqlData = new SqlDataAdapter("usp_listapaises", connection))
+            {
+                sqlData.SelectCommand.CommandType = CommandType.StoredProcedure;
+                DataTable dataTable = new DataTable();
+                sqlData.Fill(dataTable);
+                return dataTable;                
+            }
+            
+        }
+
         public DataTable ListarDetalle(int x)
         {
             SqlConnection connection = LeerCadena();
